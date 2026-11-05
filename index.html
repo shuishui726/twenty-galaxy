@@ -10,8 +10,8 @@
     />
     <link rel="icon" type="image/svg+xml" href="/twenty-galaxy/favicon.svg" />
     <title>TWENTY · 星河予我</title>
-    <script type="module" crossorigin src="/twenty-galaxy/assets/index-B4ET4Qc1.js"></script>
-    <link rel="stylesheet" crossorigin href="/twenty-galaxy/assets/index-V4xqhslp.css">
+    <script type="module" crossorigin src="/twenty-galaxy/assets/index-nXXY7iyA.js"></script>
+    <link rel="stylesheet" crossorigin href="/twenty-galaxy/assets/index-C4UFmh6Q.css">
   </head>
   <body>
     <div id="app">
@@ -188,12 +188,14 @@
 
       <div id="cameraPanel" class="camera-panel" hidden>
         <div class="camera-frame">
-          <video id="handVideo" muted playsinline aria-label="手势摄像头预览"></video>
+          <video id="handVideo" muted playsinline aria-label="手势摄像头"></video>
+          <canvas id="handPreview" class="camera-preview-canvas" width="320" height="240" aria-label="手势摄像头预览"></canvas>
           <span class="camera-scan" aria-hidden="true"></span>
         </div>
         <div class="camera-meta">
           <span class="camera-dot" aria-hidden="true"></span>
           <span id="gestureStatus">正在寻找手势…</span>
+          <button id="cameraSwitch" class="camera-switch" type="button" hidden>切换</button>
         </div>
       </div>
 
