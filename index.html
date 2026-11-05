@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#050817" />
+    <meta
+      name="description"
+      content="TWENTY · 星河予我 — 一件献给二十岁的沉浸式 WebGL 数字艺术作品。"
+    />
+    <link rel="icon" type="image/svg+xml" href="/twenty-galaxy/favicon.svg" />
+    <title>TWENTY · 星河予我</title>
+    <script type="module" crossorigin src="/twenty-galaxy/assets/index-B4ET4Qc1.js"></script>
+    <link rel="stylesheet" crossorigin href="/twenty-galaxy/assets/index-V4xqhslp.css">
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="webgl" aria-hidden="true"></canvas>
+      <div class="ambient-vignette" aria-hidden="true"></div>
+
+      <div id="loader" class="loader" role="status" aria-live="polite">
+        <div class="loader-mark">
+          <span class="loader-orbit"></span>
+          <span class="loader-core"></span>
+        </div>
+        <p class="loader-word">TWENTY</p>
+        <p class="loader-copy">正在唤醒星河</p>
+        <div class="loader-track"><span id="loaderBar"></span></div>
+      </div>
+
+      <header class="topbar">
+        <div class="brand" aria-label="TWENTY 星河予我">
+          <span class="brand-en">TWENTY</span>
+          <span class="brand-rule" aria-hidden="true"></span>
+          <span class="brand-cn">星河予我</span>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-tools" data-ui>
+            <button id="gestureToggle" class="top-tool" type="button" aria-pressed="false" aria-label="开启手势控制">
+              <span class="hand-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 11V6.5a1.5 1.5 0 0 1 3 0V10" />
+                  <path d="M11 10V4.5a1.5 1.5 0 0 1 3 0V10" />
+                  <path d="M14 10V5.5a1.5 1.5 0 0 1 3 0V11" />
+                  <path d="M17 8.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1.5a6 6 0 0 1-4.2-1.8l-3.1-3.1a1.7 1.7 0 0 1 2.4-2.4L8 15" />
+                </svg>
+              </span>
+              <span class="top-tool-label">手势</span>
+            </button>
+            <button id="soundToggle" class="top-tool" type="button" aria-pressed="false" aria-label="开启声音">
+              <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="top-tool-label">声音</span>
+            </button>
+          </div>
+          <div class="top-meta">
+            <span class="top-meta-year">2026</span>
+            <span class="top-meta-dot" aria-hidden="true"></span>
+            <span id="topMetaText">MY TWENTIETH BIRTHDAY</span>
+          </div>
+        </div>
+      </header>
+
+      <main id="landing" class="landing ui-layer">
+        <div class="landing-index">
+          <span>SCENE 01</span>
+          <span class="hairline" aria-hidden="true"></span>
+          <span>PROLOGUE</span>
+        </div>
+
+        <div class="landing-copy">
+          <p class="eyebrow">AN INTERSTELLAR BIRTHDAY</p>
+          <h1 class="landing-title">
+            <span>星河</span><span>予我</span>
+          </h1>
+          <p class="landing-sub">宇宙浩瀚，而我刚好二十岁。</p>
+        </div>
+
+        <div class="landing-action" data-ui>
+          <button id="enterButton" class="enter-button" type="button">
+            <span class="enter-button-label">进入星河</span>
+            <span class="enter-button-line" aria-hidden="true"></span>
+            <svg class="enter-button-arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12h15M13 6l6 6-6 6" />
+            </svg>
+          </button>
+          <p class="landing-hint">拖动旋转 · 滚轮缩放 · 一次六幕的星河旅程</p>
+        </div>
+
+        <p class="landing-side-note" aria-hidden="true">THE STARS REMEMBER</p>
+        <div class="landing-corner" aria-hidden="true">
+          <span></span><span></span>
+        </div>
+      </main>
+
+      <section id="experience" class="experience ui-layer" hidden>
+        <div class="experience-caption" aria-live="polite">
+          <p class="experience-index">
+            <span id="formIndex">01</span>
+            <span class="hairline" aria-hidden="true"></span>
+            <span id="formTag">FORM STUDY</span>
+          </p>
+          <h2 id="formTitle">星河序章</h2>
+          <p id="formSub">宇宙浩瀚，而我刚好二十岁。</p>
+        </div>
+
+        <div class="experience-right" data-ui>
+          <span class="phase-chip"><i aria-hidden="true"></i> <span id="phaseChipLabel">PHASE I · CORE</span></span>
+          <button id="photoWallButton" class="quiet-button photo-wall-button" type="button" hidden>
+            照片墙
+          </button>
+          <button id="homeButton" class="quiet-button" type="button">返回序章</button>
+        </div>
+
+        <nav id="formDock" class="form-dock" aria-label="核心形态预览" data-ui>
+          <button class="form-button is-active" type="button" data-form="twenty" aria-pressed="true">
+            <span class="form-button-number">01</span>
+            <span class="form-button-name">数字 20</span>
+          </button>
+          <button class="form-button" type="button" data-form="galaxy" aria-pressed="false">
+            <span class="form-button-number">02</span>
+            <span class="form-button-name">星河</span>
+          </button>
+          <button class="form-button" type="button" data-form="rose" aria-pressed="false">
+            <span class="form-button-number">03</span>
+            <span class="form-button-name">玫瑰</span>
+          </button>
+          <button class="form-button" type="button" data-form="photo" aria-pressed="false">
+            <span class="form-button-number">04</span>
+            <span class="form-button-name">记忆</span>
+          </button>
+        </nav>
+
+        <p class="experience-hint">
+          拖动旋转 · 滚轮缩放 · 左右键切换幕
+        </p>
+        <p class="experience-note">A STUDY IN LIGHT &amp; MEMORY</p>
+
+        <nav id="storyNav" class="story-nav" aria-label="六幕场景控制" data-ui>
+          <button id="storyPrev" class="story-control" type="button" aria-label="上一幕">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <div class="story-center">
+            <div class="story-meta">
+              <span id="storyCounter">01 / 06</span>
+              <div id="storyDots" class="story-dots" aria-hidden="true"></div>
+            </div>
+            <div class="story-progress" aria-hidden="true"><span id="storyProgressBar"></span></div>
+          </div>
+          <button id="storyPlay" class="story-control" type="button" aria-label="暂停自动播放">
+            <span id="storyPlayIcon" class="story-play-icon" aria-hidden="true">Ⅱ</span>
+          </button>
+          <button id="storyNext" class="story-control" type="button" aria-label="下一幕">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </nav>
+      </section>
+
+      <button id="ritualAction" class="ritual-action" type="button" hidden>
+        <span class="ritual-flame" aria-hidden="true"></span>
+        <span class="ritual-label">吹灭蜡烛</span>
+      </button>
+
+      <section id="wishBlessing" class="wish-blessing" hidden aria-live="polite">
+        <p class="wish-kicker">MAKE A WISH · 20</p>
+        <h2>二十岁生日快乐。</h2>
+        <p>愿所有期待，都如约而至。</p>
+      </section>
+
+      <section id="storyEnding" class="story-ending" hidden aria-label="故事终章">
+        <p class="story-ending-kicker">EPILOGUE · 2026</p>
+        <h2>TWENTY</h2>
+        <p class="story-ending-cn">星河予我</p>
+        <p class="story-ending-date">2026 · MY TWENTIETH BIRTHDAY</p>
+        <button id="replayStory" class="enter-button story-replay" type="button">
+          <span class="enter-button-label">重新体验</span>
+          <span class="enter-button-line" aria-hidden="true"></span>
+          <svg class="enter-button-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 12h15M13 6l6 6-6 6" />
+          </svg>
+        </button>
+      </section>
+
+      <div id="embedNotice" class="embed-notice" hidden>
+        <span>侧边栏 / 内嵌预览可能拦截摄像头，甚至暂停加载。请在独立标签页打开。</span>
+        <button id="openExternal" class="embed-notice-action" type="button">在新标签页打开</button>
+        <button id="dismissEmbed" class="embed-notice-close" type="button" aria-label="关闭提示">×</button>
+      </div>
+
+      <div id="cameraPanel" class="camera-panel" hidden>
+        <div class="camera-frame">
+          <video id="handVideo" muted playsinline aria-label="手势摄像头预览"></video>
+          <span class="camera-scan" aria-hidden="true"></span>
+        </div>
+        <div class="camera-meta">
+          <span class="camera-dot" aria-hidden="true"></span>
+          <span id="gestureStatus">正在寻找手势…</span>
+        </div>
+      </div>
+
+      <div id="gestureToast" class="gesture-toast" role="status" aria-live="polite"></div>
+
+      <section id="photoRoom" class="photo-room" hidden aria-label="时光收藏馆">
+        <div class="photo-room-head">
+          <div>
+            <p class="photo-room-kicker">
+              MEMORY ARCHIVE <span class="hairline" aria-hidden="true"></span> PRIVATE / LOCAL
+            </p>
+            <h2>时光收藏馆</h2>
+            <p class="photo-room-sub">照片只留在这台设备里。被光照亮的，都是我们来时的路。</p>
+          </div>
+          <button id="photoClose" class="photo-close" type="button" aria-label="关闭照片墙">
+            <span aria-hidden="true"></span><span aria-hidden="true"></span>
+          </button>
+        </div>
+
+        <div class="photo-stage">
+          <button id="photoPrev" class="photo-nav photo-nav-prev" type="button" aria-label="上一张照片">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <div id="photoCarousel" class="photo-carousel" aria-live="polite"></div>
+          <button id="photoNext" class="photo-nav photo-nav-next" type="button" aria-label="下一张照片">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+
+        <div id="photoEmpty" class="photo-empty" hidden>
+          <div class="photo-empty-orbit" aria-hidden="true"><span></span></div>
+          <p class="photo-empty-kicker">NO MEMORIES YET</p>
+          <h3>把第一束光放进来</h3>
+          <p>照片不会离开你的设备。支持点击放大、左右切换、替换和文字描述。</p>
+          <button id="photoEmptyUpload" class="enter-button" type="button">
+            <span class="enter-button-label">添加照片</span>
+            <span class="enter-button-line" aria-hidden="true"></span>
+            <svg class="enter-button-arrow" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 12h15M13 6l6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="photo-room-bottom">
+          <label class="photo-upload-button">
+            <input id="photoUpload" type="file" accept="image/*" multiple hidden />
+            <span aria-hidden="true">+</span> 添加照片
+          </label>
+          <p id="photoCount" class="photo-count">0 / 12</p>
+          <p class="photo-privacy">仅保存在本机 · 不会上传</p>
+        </div>
+
+        <div id="photoProcessing" class="photo-processing" hidden role="status" aria-live="polite">
+          <span class="photo-processing-orbit" aria-hidden="true"></span>
+          <p>正在把回忆化作星尘…</p>
+        </div>
+      </section>
+
+      <div id="photoLightbox" class="photo-lightbox" hidden role="dialog" aria-modal="true" aria-label="查看照片">
+        <button id="lightboxClose" class="photo-close photo-lightbox-close" type="button" aria-label="关闭大图">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span>
+        </button>
+        <figure>
+          <img id="lightboxImage" alt="" />
+          <figcaption id="lightboxCaption"></figcaption>
+        </figure>
+      </div>
+
+      <div id="captionDialog" class="caption-dialog" hidden role="dialog" aria-modal="true" aria-labelledby="captionDialogTitle">
+        <form id="captionForm" class="caption-panel">
+          <p class="caption-kicker">EDIT CAPTION</p>
+          <h3 id="captionDialogTitle">为这张照片留一句话</h3>
+          <label class="caption-field">
+            <span>照片描述</span>
+            <input id="captionInput" type="text" maxlength="60" autocomplete="off" />
+          </label>
+          <div class="caption-actions">
+            <button id="captionCancel" class="quiet-button" type="button">取消</button>
+            <button id="captionSave" class="enter-button caption-save" type="submit">
+              <span class="enter-button-label">保存</span>
+              <span class="enter-button-line" aria-hidden="true"></span>
+              <svg class="enter-button-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 12h15M13 6l6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <input id="photoReplace" type="file" accept="image/*" hidden />
+      <div id="photoToast" class="photo-toast" role="status" aria-live="polite"></div>
+
+      <div id="errorPanel" class="error-panel" hidden role="alert">
+        <p class="error-kicker">LOST IN THE VOID</p>
+        <h2>星河暂时没有回应</h2>
+        <p id="errorMessage">
+          你的浏览器似乎没有启用 WebGL。请尝试打开硬件加速，或换用最新版 Chrome / Edge。
+        </p>
+        <button id="retryButton" class="enter-button error-retry" type="button">
+          <span class="enter-button-label">重新尝试</span>
+          <span class="enter-button-line" aria-hidden="true"></span>
+          <svg class="enter-button-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 12h15M13 6l6 6-6 6" />
+          </svg>
+        </button>
+      </div>
+
+      <noscript>
+        <div class="noscript">请启用 JavaScript，星河才会亮起。</div>
+      </noscript>
+    </div>
+  </body>
+</html>

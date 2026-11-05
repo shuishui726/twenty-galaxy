@@ -1,0 +1,8 @@
+MediaPipe Hands
+Copyright 2023 Google LLC
+Licensed under the Apache License, Version 2.0.
+https://github.com/google-ai-edge/mediapipe
+https://www.apache.org/licenses/LICENSE-2.0
+
+These files are vendored locally so hand tracking runs on this device without
+sending camera frames to a third-party service.
